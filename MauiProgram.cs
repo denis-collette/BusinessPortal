@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using BusinessPortal.Services; // Add this using statement
+using Microsoft.Extensions.Configuration;
 using System.Reflection;
 
 namespace BusinessPortal;
@@ -16,11 +17,7 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-        // --- START: Configuration Loading ---
-        // This code reads the appsettings.json file and makes the settings
-        // available throughout the application.
         var assembly = Assembly.GetExecutingAssembly();
-        // The resource name must match YourProjectName.appsettings.json
         using var stream = assembly.GetManifestResourceStream("BusinessPortal.appsettings.json");
 
         if (stream != null)
@@ -31,12 +28,19 @@ public static class MauiProgram
 
             builder.Configuration.AddConfiguration(config);
         }
-        // --- END: Configuration Loading ---
+
+        // --- START: Dependency Injection Registration ---
+
+        // Register the MockAuthService as a Singleton.
+        // The app will create one instance of MockAuthService and share it.
+        // When a class asks for IAuthService, this instance will be provided.
+        builder.Services.AddSingleton<IAuthService, MockAuthService>();
+
+        // --- END: Dependency Injection Registration ---
 
 
 #if DEBUG
-        // In a real app, you would register your services here for dependency injection.
-        // e.g., builder.Services.AddSingleton<IMyApiService, MyApiService>();
+        // We can add other services here in the future
 #endif
 
         return builder.Build();
