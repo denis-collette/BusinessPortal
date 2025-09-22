@@ -1,43 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!--
-  This file defines the high-level navigation of your app, like a tab bar or a flyout menu.
-  We'll use a TabBar here for the main sections: Portal, Profile, and Super Admin.
--->
 <Shell
     x:Class="BusinessPortal.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:BusinessPortal.Views;assembly=BusinessPortal"
-    Shell.FlyoutBehavior="Disabled"
-    Title="BusinessPortal">
+    xmlns:views="clr-namespace:BusinessPortal.Views;assembly=BusinessPortal"
+    Shell.FlyoutBehavior="Disabled">
 
     <!-- 
-      A TabBar is a common navigation pattern for mobile apps.
-      Each Tab represents a main section of your application.
+        Give the main TabBar a unique route name. This is the target for our
+        navigation call after a successful login.
     -->
-    <TabBar>
-        <!-- Portal Tab -->
-        <Tab Title="Portal" Icon="dotnet_bot.svg">
+    <TabBar Route="Main">
+        <Tab Title="Portal" Icon="dotnet_bot.png">
             <ShellContent
-                Title="Services"
-                ContentTemplate="{DataTemplate local:PortalPage}"
+                Title="Portal"
+                ContentTemplate="{DataTemplate views:PortalPage}"
                 Route="PortalPage" />
         </Tab>
-
-        <!-- Profile Tab -->
-        <Tab Title="Profile" Icon="dotnet_bot.svg">
+        <Tab Title="Profile" Icon="dotnet_bot.png">
             <ShellContent
-                Title="My Profile"
-                ContentTemplate="{DataTemplate local:ProfilePage}"
+                Title="Profile"
+                ContentTemplate="{DataTemplate views:ProfilePage}"
                 Route="ProfilePage" />
         </Tab>
-
-        <!-- Super Admin Tab -->
-        <!-- TODO: We will later hide this tab based on the user's role. -->
-        <Tab Title="Super Admin" Icon="dotnet_bot.svg">
+        <Tab Title="Super Admin" Icon="dotnet_bot.png">
             <ShellContent
-                Title="Admin Panel"
-                ContentTemplate="{DataTemplate local:SuperAdminPage}"
+                Title="Super Admin"
+                ContentTemplate="{DataTemplate views:SuperAdminPage}"
                 Route="SuperAdminPage" />
         </Tab>
     </TabBar>

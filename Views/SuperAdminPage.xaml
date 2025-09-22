@@ -3,13 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BusinessPortal.Views.SuperAdminPage"
              Title="SuperAdminPage">
-    <VerticalStackLayout Padding="20">
-        <Label 
+	<VerticalStackLayout Padding="20">
+		<Label
             Text="Super Admin Management"
-            VerticalOptions="Center" 
+            VerticalOptions="Center"
             HorizontalOptions="Center"
             FontSize="22" />
-        <!-- We will add admin tools here later -->
-    </VerticalStackLayout>
+		<!-- We will add admin tools here later -->
+	</VerticalStackLayout>
 </ContentPage>
 
